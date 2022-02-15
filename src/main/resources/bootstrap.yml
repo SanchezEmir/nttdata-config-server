@@ -1,0 +1,34 @@
+server:
+  port: 8888
+  
+#APPLICATION NAME
+spring:
+  application:
+    name: config-server
+    
+#SECURITY
+  security:
+    user:
+      name: nttdata
+      password: qwerty
+
+#GIT
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/SanchezEmir/config-data.git
+          search-paths: /
+          default-label: main
+          username: raaa
+          password: raaa
+      
+#EUREKA
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+      #defaultZone: http://eureka-server:8761/eureka #docker
+    register-with-eureka: true
+    fetch-registry: true
+
