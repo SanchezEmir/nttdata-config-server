@@ -17,18 +17,20 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/SanchezEmir/config-data.git
+          uri: ${REMOTE_REPOSITORY:https://github.com/SanchezEmir/config-data.git}
+          clone-on-start: true
           search-paths: /
           default-label: main
           username: raaa
           password: raaa
       
 #EUREKA
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka
-      #defaultZone: http://eureka-server:8761/eureka #docker
-    register-with-eureka: true
-    fetch-registry: true
+#eureka:
+#  client:
+#    serviceUrl:
+#      #defaultZone: http://localhost:8761/eureka
+#      #defaultZone: http://eureka-server:8761/eureka #docker
+#      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+#    register-with-eureka: true
+#    fetch-registry: true
 
