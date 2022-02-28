@@ -1,36 +1,47 @@
+#PORT
 server:
   port: 8888
-  
+
 #APPLICATION NAME
 spring:
   application:
     name: config-server
-    
-#SECURITY
-  security:
-    user:
-      name: nttdata
-      password: qwerty
 
 #GIT
   cloud:
     config:
       server:
         git:
-          uri: ${REMOTE_REPOSITORY:https://github.com/SanchezEmir/config-data.git}
+          uri: ${REMOTE_REPOSITORY:https://github.com/SanchezEmir/config-repo}
           clone-on-start: true
-          search-paths: /
+          #search-paths: /
           default-label: main
+          force-pull: true
           username: raaa
           password: raaa
-      
+
+#SECURITY
+  security:
+    user:
+      name: nttdata
+      password: qwerty
+  
 #EUREKA
-#eureka:
-#  client:
-#    serviceUrl:
-#      #defaultZone: http://localhost:8761/eureka
-#      #defaultZone: http://eureka-server:8761/eureka #docker
-#      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
-#    register-with-eureka: true
-#    fetch-registry: true
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+      #defaultZone: http://localhost:8761/eureka
+      #defaultZone: http://eureka-server:8761/eureka #docker
+      
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
 
